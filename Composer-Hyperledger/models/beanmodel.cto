@@ -1,61 +1,75 @@
 /**
-* Sample Bean network definition.
-*/
+ * Sample Bean network definition.
+ */
 namespace org.example.basic
 
 enum BeanSort {
-o OrganicBean
-o RegularBean
+    o OrganicBean
+    o RegularBean
+}
+
+concept Certificate{
+	--> BeanParticipant owner
+    o String key
 }
 
 asset BeanBlock identified by BeanBlockId {
-o String BeanBlockId
---> BeanParticipant owner
-o Integer Amount //The amount of Beans in tons
-o BeanSort BeanType //The type of Bean (see enum)
-o String Source //Farm or previous BeanBlockId
-o String Datahash //links to the SQL Database
-o Boolean VerificationBit //if the BeanBlock has "bean" verified :)
+    o String BeanBlockId
+    --> BeanParticipant owner
+    o Integer Amount //The amount of Beans in tons 
+    o BeanSort BeanType //The type of Bean (see enum)
+    o String Source //Farm or previous BeanBlockId
+    o String Datahash //links to the SQL Database
+    o Boolean VerificationBit //if the BeanBlock has "bean" verified :)
+}
+
+asset VerificationPackage identified by PackageId {
+    o String PackageId
+    --> BeanBlock Block
+    o String publicKey //The key to decrypt the linked BeanBlock
+    --> BeanParticipant[] VerificationList optional //a list of Verifiers. Need to add the possibility to see how a Verifier voted.
+    o Integer VerificationValue
+    o Certificate TransactionCertificate
 }
 
 participant BeanParticipant identified by participantId {
-o String participantId
-o String firstName
-o String lastName
-o String Type //e.g. Farmer or Trader etc.
+    o String participantId
+    o String firstName
+    o String lastName
+    o String Type //e.g. Farmer or Trader etc.
 }
 
 transaction changeType {
---> BeanBlock asset
-o BeanSort newType
+  	--> BeanBlock asset
+  	o BeanSort newType
 }
 
 event changeTypeEvent {
---> BeanBlock asset
-o BeanSort oldType
-o BeanSort newType
+    --> BeanBlock asset
+    o BeanSort oldType
+    o BeanSort newType
 }
 
 transaction changeAmount {
---> BeanBlock asset
-o Integer newAmount
+    --> BeanBlock asset
+    o Integer newAmount
 }
 
 event changeAmountEvent {
---> BeanBlock asset
-o Integer oldAmount
-o Integer newAmount
+    --> BeanBlock asset
+    o Integer oldAmount
+    o Integer newAmount
 }
 
 transaction changeVerification {
---> BeanBlock asset
-o Boolean newVerificationBit
+    --> BeanBlock asset
+    o Boolean newVerificationBit
 }
 
 event changeVerificationEvent {
---> BeanBlock asset
-o Boolean oldVerificationBit
-o Boolean newVerificationBit
+    --> BeanBlock asset
+    o Boolean oldVerificationBit
+    o Boolean newVerificationBit
 }
 
 
