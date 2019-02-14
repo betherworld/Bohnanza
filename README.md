@@ -38,29 +38,29 @@ Plausibility checks (IoTs match up):
 ## BeanPool System
  
 1. Farmer generates a BeanBlock and links his verification Data to the BeanBlock.
-- Each Farmer uses his private key to encrypt the the BeanBlock.
-- A trader verifies the Volume and Product received and puts his “Signature” (Transition certificate) on the VerificationPackage.
+   - Each Farmer uses his private key to encrypt the the BeanBlock.
+   - A trader verifies the Volume and Product received and puts his “Signature” (Transition certificate) on the VerificationPackage.
 2. The BeanBlock, together with the public key of the farmer who signed it, is put into a VerificationPackage.
-- Depending on the reputation of the Farmer, his VerificationPackage is assigned a VerificationValue.
+   - Depending on the reputation of the Farmer, his VerificationPackage is assigned a VerificationValue.
 3. A Verifier (Farmer, Peterson Control or other) is assigned a VerificationPackage at random from the BeanPool.
-- While the BeanBlock contained in the VerificationPackage is being verified by the Verifier by means of the verification data, it remains inaccessible in the BeanPool.
-- The Verifier unlocks the BeanBlock with the attached public key.
+   - While the BeanBlock contained in the VerificationPackage is being verified by the Verifier by means of the verification data, it remains inaccessible in the BeanPool.
+   - The Verifier unlocks the BeanBlock with the attached public key.
 
-- He looks at the verification Data from IoT devices and can decide if the data matches the claim in the BeanBlock.
+   - He looks at the verification Data from IoT devices and can decide if the data matches the claim in the BeanBlock.
 
-   i) If the data matches the claim, the VerificationPackage, VerificationValue is raised by an amount proportional to the reputation of the Verifier.
+     - If the data matches the claim, the VerificationPackage, VerificationValue is raised by an amount proportional to the reputation of the Verifier.
 
-   ii) If the data does not match the claim the VerificationPackage, VerificationValue is lowered by an amount proportional to the reputation of the Verifier.
+     - If the data does not match the claim the VerificationPackage, VerificationValue is lowered by an amount proportional to the reputation of the Verifier.
 
-- Before the VerificationPackage can be returned to the BeanPool, the following conditions are checked
+   - Before the VerificationPackage can be returned to the BeanPool, the following conditions are checked
 
-   i) If the VerificationPackage VerificationValue is below a determined lower threshold, the BeanBlock is marked as invalid and the reputation of the original Farmer and all Verifiers who marked the Block as valid is lowered. The BeanBlock is still added to the BeanChain.
+     - If the VerificationPackage VerificationValue is below a determined lower threshold, the BeanBlock is marked as invalid and the reputation of the original Farmer and all Verifiers who marked the Block as valid is lowered. The BeanBlock is still added to the BeanChain.
    
-   ii) If the VerificationPackage VerificationValue is above a certain upper threshold, the BeanBlock is marked as Valid and added to the BeanChain. Additionally, the reputation of the original Farmer and all who verified correctly is raised.
+     - If the VerificationPackage VerificationValue is above a certain upper threshold, the BeanBlock is marked as Valid and added to the BeanChain. Additionally, the reputation of the original Farmer and all who verified correctly is raised.
    
-   iii) If the VerificationPackage VerificationValue does not pass the lower nor the upper threshold, it is returned to the BeanPool.
+     - If the VerificationPackage VerificationValue does not pass the lower nor the upper threshold, it is returned to the BeanPool.
    
-- When the VerificationPackage is returned to the BeanPool the vote and id of the Verifier is added to the VerrificationList of the VerificationPackage. This enables the continuous tracking of how each Verifier voted. Finally the Verifier encrypts the BeanBlock with his personal private key and together with the new public key, the VerificationPackage is thrown back into the BeanPool.
+   - When the VerificationPackage is returned to the BeanPool the vote and id of the Verifier is added to the VerrificationList of the VerificationPackage. This enables the continuous tracking of how each Verifier voted. Finally the Verifier encrypts the BeanBlock with his personal private key and together with the new public key, the VerificationPackage is thrown back into the BeanPool.
 
 
 ## Definition of the BeanBlock
