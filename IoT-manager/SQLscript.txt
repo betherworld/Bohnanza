@@ -1,0 +1,31 @@
+CREATE TABLE Farmer(
+id INT PRIMARY KEY AUTO_INCREMENT,
+lat FLOAT,
+lng FLOAT,
+organic BOOLEAN,
+fielda INT,
+fieldb INT,
+warehouse BOOLEAN);
+
+CREATE TABLE Subcontracter(
+ id INT PRIMARY KEY AUTO_INCREMENT,
+ lat FLOAT,
+lng FLOAT,
+volume INT,
+date TIMESTAMP
+source INT);
+
+CREATE TABLE Trader(
+ id INT PRIMARY KEY AUTO_INCREMENT,
+lat FLOAT,
+lng FLOAT,
+volume INT,
+date TIMESTAMP,
+source INT);
+
+CREATE TABLE gpsData(
+id INT PRIMARY KEY AUTO_INCREMENT,
+lat FLOAT, 
+lng FLOAT,
+date TIMESTAMP);
+
