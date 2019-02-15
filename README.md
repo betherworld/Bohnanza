@@ -60,7 +60,7 @@ Plausibility checks (IoTs match up):
    
      - If the VerificationPackage VerificationValue does not pass the lower nor the upper threshold, it is returned to the BeanPool.
    
-   - When the VerificationPackage is returned to the BeanPool the vote and id of the Verifier is added to the VerrificationList of the VerificationPackage. This enables the continuous tracking of how each Verifier voted. Finally the Verifier encrypts the BeanBlock with his personal private key and together with the new public key, the VerificationPackage is thrown back into the BeanPool.
+   - When the VerificationPackage is returned to the BeanPool the vote and id of the Verifier is added to the VerificationList of the VerificationPackage. This enables the continuous tracking of how each Verifier voted. Finally, the Verifier encrypts the BeanBlock with his personal private key and together with the new public key, the VerificationPackage is thrown back into the BeanPool.
 
 
 ## Definition of the BeanBlock
