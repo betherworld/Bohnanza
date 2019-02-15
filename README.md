@@ -38,7 +38,7 @@ Plausibility checks (IoTs match up):
 ## BeanPool System
  
 1. Farmer generates a BeanBlock and links his verification Data to the BeanBlock.
-   - Each Farmer uses his public key to encrypt the the BeanBlock.
+   - Each Farmer uses his public key to encrypt the BeanBlock.
    - A trader verifies the Volume and Product received and puts his “Signature” (Transition certificate) on the VerificationPackage.
 2. The BeanBlock, together with the private key of the farmer who signed it, is put into a VerificationPackage.
    - Depending on the reputation of the Farmer, his VerificationPackage is assigned a VerificationValue.
