@@ -38,13 +38,13 @@ Plausibility checks (IoTs match up):
 ## BeanPool System
  
 1. Farmer generates a BeanBlock and links his verification Data to the BeanBlock.
-   - Each Farmer uses his private key to encrypt the the BeanBlock.
+   - Each Farmer uses his public key to encrypt the the BeanBlock.
    - A trader verifies the Volume and Product received and puts his “Signature” (Transition certificate) on the VerificationPackage.
-2. The BeanBlock, together with the public key of the farmer who signed it, is put into a VerificationPackage.
+2. The BeanBlock, together with the private key of the farmer who signed it, is put into a VerificationPackage.
    - Depending on the reputation of the Farmer, his VerificationPackage is assigned a VerificationValue.
 3. A Verifier (Farmer, Peterson Control or other) is assigned a VerificationPackage at random from the BeanPool.
    - While the BeanBlock contained in the VerificationPackage is being verified by the Verifier by means of the verification data, it remains inaccessible in the BeanPool.
-   - The Verifier unlocks the BeanBlock with the attached public key.
+   - The Verifier unlocks the BeanBlock with the attached private key.
 
    - He looks at the verification Data from IoT devices and can decide if the data matches the claim in the BeanBlock.
 
@@ -60,7 +60,7 @@ Plausibility checks (IoTs match up):
    
      - If the VerificationPackage VerificationValue does not pass the lower nor the upper threshold, it is returned to the BeanPool.
    
-   - When the VerificationPackage is returned to the BeanPool the vote and id of the Verifier is added to the VerificationList of the VerificationPackage. This enables the continuous tracking of how each Verifier voted. Finally, the Verifier encrypts the BeanBlock with his personal private key and together with the new public key, the VerificationPackage is thrown back into the BeanPool.
+   - When the VerificationPackage is returned to the BeanPool the vote and id of the Verifier is added to the VerificationList of the VerificationPackage. This enables the continuous tracking of how each Verifier voted. Finally, the Verifier encrypts the BeanBlock with his personal public key and together with the new private key, the VerificationPackage is thrown back into the BeanPool. This Method guarantees that everytime a VerificationPackage enters the BeanPool it get's clearly certified by a unique key, thus insuring traceability.
 
 
 ## Definition of the BeanBlock
